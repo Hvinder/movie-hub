@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Footer from "../components/common/Footer";
 import Header from "../components/common/Header";
 import HeroSection from "../components/HeroSection";
+import TopMovies from "../components/TopMovies";
 
 const Container = styled.div`
   display: flex;
@@ -16,6 +17,7 @@ const Home: React.FC = () => {
     <Container>
       <Header />
       <HeroSection />
+      <TopMovies />
       <Footer />
     </Container>
   );
