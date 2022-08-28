@@ -8,7 +8,6 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  background: #4994d9;
   box-sizing: border-box;
   padding: 18px 60px;
 `;
@@ -30,16 +29,23 @@ const Brand = styled.div`
 
 const SearchContainer = styled.div``;
 
-const Header: React.FC<{ showSearch?: boolean }> = ({ showSearch = false }) => {
+const Header: React.FC<{
+  showSearch?: boolean;
+  searchQuery?: string;
+  setSearchQuery?: React.Dispatch<React.SetStateAction<string>>;
+}> = ({ showSearch = false, setSearchQuery, searchQuery }) => {
   return (
-    <Container>
+    <Container className="gradient-background">
       <BrandContainer>
         <Logo />
         <Brand>Movies</Brand>
       </BrandContainer>
       {showSearch && (
         <SearchContainer>
-          <SearchBox />
+          <SearchBox
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+          />
         </SearchContainer>
       )}
     </Container>

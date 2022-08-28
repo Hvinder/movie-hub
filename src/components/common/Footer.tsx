@@ -14,7 +14,6 @@ const Container = styled.div`
   width: 100%;
   padding: 30px 60px;
   box-sizing: border-box;
-  background: #4994d9;
   font-weight: 400;
   font-size: 10px;
   line-height: 14px;
@@ -40,7 +39,7 @@ const Socials = styled.div`
 
 const Footer = () => {
   return (
-    <Container>
+    <Container className="gradient-background">
       <Description>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua

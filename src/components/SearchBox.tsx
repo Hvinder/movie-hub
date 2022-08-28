@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 
 const Input = styled.input`
@@ -22,8 +23,20 @@ const Input = styled.input`
   }
 `;
 
-const SearchBox = () => {
-  return <Input type="text" placeholder="Search title" />;
+interface Props {
+  searchQuery?: string;
+  setSearchQuery?: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const SearchBox: React.FC<Props> = ({ searchQuery, setSearchQuery }) => {
+  return (
+    <Input
+      type="text"
+      placeholder="Search title"
+      value={searchQuery}
+      onChange={(ev) => setSearchQuery?.(ev.target.value)}
+    />
+  );
 };
 
 export default SearchBox;
