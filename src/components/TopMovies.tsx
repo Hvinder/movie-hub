@@ -20,6 +20,25 @@ const Row = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   gap: 24px;
+  box-sizing: border-box;
+  padding: 50px 0;
+`;
+
+const ViewAllBtn = styled.button`
+  width: 180px;
+  height: 50px;
+  background: #e5e5e5;
+  border-radius: 5px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: #575757;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  &:hover {
+    background: #d8d8d8;
+  }
 `;
 
 const MOVIE_MOCK: MovieDetails[] = [
@@ -150,6 +169,7 @@ const TopMovies = () => {
           <MovieCard movieDetail={movie} />
         ))}
       </Row>
+      <ViewAllBtn>View all</ViewAllBtn>
     </Container>
   );
 };
