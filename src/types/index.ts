@@ -3,13 +3,18 @@ interface Actor {
   name: string;
 }
 
+interface Category {
+  id: string;
+  name: string;
+}
+
 export interface MovieDetails {
   id: string;
   name: string;
   description: string;
   longDescription: string;
   actors: Actor[];
-  category: string[];
+  category: Category[];
 }
 
 export const MOVIE_MOCK: MovieDetails[] = [
@@ -24,7 +29,11 @@ export const MOVIE_MOCK: MovieDetails[] = [
       { id: "1", name: "Actor name" },
       { id: "2", name: "Actor name" },
     ],
-    category: ["Category", "Category", "Category"],
+    category: [
+      { id: "1", name: "Category" },
+      { id: "2", name: "Category" },
+      { id: "3", name: "Category" },
+    ],
   },
   {
     id: "2",
@@ -37,7 +46,11 @@ export const MOVIE_MOCK: MovieDetails[] = [
       { id: "1", name: "Actor name" },
       { id: "2", name: "Actor name" },
     ],
-    category: ["Category", "Category", "Category"],
+    category: [
+      { id: "1", name: "Category" },
+      { id: "2", name: "Category" },
+      { id: "3", name: "Category" },
+    ],
   },
   {
     id: "3",
@@ -50,7 +63,11 @@ export const MOVIE_MOCK: MovieDetails[] = [
       { id: "1", name: "Actor name" },
       { id: "2", name: "Actor name" },
     ],
-    category: ["Category", "Category", "Category"],
+    category: [
+      { id: "1", name: "Category" },
+      { id: "2", name: "Category" },
+      { id: "3", name: "Category" },
+    ],
   },
   {
     id: "4",
@@ -63,7 +80,11 @@ export const MOVIE_MOCK: MovieDetails[] = [
       { id: "1", name: "Actor name" },
       { id: "2", name: "Actor name" },
     ],
-    category: ["Category", "Category", "Category"],
+    category: [
+      { id: "1", name: "Category" },
+      { id: "2", name: "Category" },
+      { id: "3", name: "Category" },
+    ],
   },
   {
     id: "5",
@@ -76,7 +97,11 @@ export const MOVIE_MOCK: MovieDetails[] = [
       { id: "1", name: "Actor name" },
       { id: "2", name: "Actor name" },
     ],
-    category: ["Category", "Category", "Category"],
+    category: [
+      { id: "1", name: "Category" },
+      { id: "2", name: "Category" },
+      { id: "3", name: "Category" },
+    ],
   },
   {
     id: "6",
@@ -89,7 +114,11 @@ export const MOVIE_MOCK: MovieDetails[] = [
       { id: "1", name: "Actor name" },
       { id: "2", name: "Actor name" },
     ],
-    category: ["Category", "Category", "Category"],
+    category: [
+      { id: "1", name: "Category" },
+      { id: "2", name: "Category" },
+      { id: "3", name: "Category" },
+    ],
   },
   {
     id: "7",
@@ -102,7 +131,11 @@ export const MOVIE_MOCK: MovieDetails[] = [
       { id: "1", name: "Actor name" },
       { id: "2", name: "Actor name" },
     ],
-    category: ["Category", "Category", "Category"],
+    category: [
+      { id: "1", name: "Category" },
+      { id: "2", name: "Category" },
+      { id: "3", name: "Category" },
+    ],
   },
   {
     id: "8",
@@ -115,7 +148,11 @@ export const MOVIE_MOCK: MovieDetails[] = [
       { id: "1", name: "Actor name" },
       { id: "2", name: "Actor name" },
     ],
-    category: ["Category", "Category", "Category"],
+    category: [
+      { id: "1", name: "Category" },
+      { id: "2", name: "Category" },
+      { id: "3", name: "Category" },
+    ],
   },
   {
     id: "9",
@@ -128,6 +165,10 @@ export const MOVIE_MOCK: MovieDetails[] = [
       { id: "1", name: "Actor name" },
       { id: "2", name: "Actor name" },
     ],
-    category: ["Category", "Category", "Category"],
+    category: [
+      { id: "1", name: "Category" },
+      { id: "2", name: "Category" },
+      { id: "3", name: "Category" },
+    ],
   },
 ];
