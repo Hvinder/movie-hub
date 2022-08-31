@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { AppContext } from "../context";
+import { IAppContext } from "../types/context";
 
 const Input = styled.input`
   width: 192px;
@@ -23,18 +25,17 @@ const Input = styled.input`
   }
 `;
 
-interface Props {
-  searchQuery?: string;
-  setSearchQuery?: React.Dispatch<React.SetStateAction<string>>;
-}
+const SearchBox: React.FC = () => {
+  const { searchQuery, updateSearchQuery } = React.useContext(
+    AppContext
+  ) as IAppContext;
 
-const SearchBox: React.FC<Props> = ({ searchQuery, setSearchQuery }) => {
   return (
     <Input
       type="text"
       placeholder="Search title"
       value={searchQuery}
-      onChange={(ev) => setSearchQuery?.(ev.target.value)}
+      onChange={(ev) => updateSearchQuery(ev.target.value)}
     />
   );
 };

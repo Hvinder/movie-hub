@@ -1,10 +1,14 @@
 import React from "react";
 import styled from "styled-components";
+
+import { fetchMovies } from "../api";
 import Footer from "../components/common/Footer";
 import Header from "../components/common/Header";
 import MovieCard from "../components/common/MovieCard";
 import Spinner from "../components/common/Spinner";
-import { MovieDetails, MOVIE_MOCK } from "../types";
+import { MovieDetails } from "../types";
+import { IAppContext } from "../types/context";
+import { AppContext } from "../context";
 
 const Container = styled.div`
   display: flex;
@@ -44,48 +48,40 @@ const Row = styled.div`
 
 const MovieList: React.FC = () => {
   const [movieList, setMovieList] = React.useState<MovieDetails[]>([]);
-  const [filteredMovieList, setFilteredMovieList] = React.useState<
-    MovieDetails[]
-  >([]);
-  const [searchQuery, setSearchQuery] = React.useState("");
+  const [moviesLoading, setMoviesLoading] = React.useState(false);
+  const { searchQuery } = React.useContext(AppContext) as IAppContext;
+
+  const handleFetchMovies = React.useCallback(async () => {
+    setMoviesLoading(true);
+    const movies = await fetchMovies({
+      page: 1,
+      limit: 9,
+      search: searchQuery,
+    });
+    setMoviesLoading(false);
+    if (movies) {
+      setMovieList(movies);
+    }
+  }, [searchQuery]);
 
   React.useEffect(() => {
-    const filtered = movieList.filter((movie) =>
-      movie.name.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setFilteredMovieList(filtered);
-  }, [movieList, searchQuery]);
-
-  React.useEffect(() => {
-    let timer: NodeJS.Timeout;
-    timer = setTimeout(() => {
-      setSearchQuery("");
-      setMovieList(MOVIE_MOCK);
-    }, 2000);
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
+    handleFetchMovies();
+  }, [handleFetchMovies]);
 
   return (
     <Container>
-      <Header
-        showSearch
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-      />
+      <Header showSearch />
       <Content>
         <Title>Movie information hub</Title>
         <Row>
-          {filteredMovieList.length ? (
+          {moviesLoading ? (
+            <Spinner />
+          ) : (
             movieList
               .slice(0, 9)
               .map((movie) => (
                 <MovieCard key={movie.id} movieDetail={movie} showActors />
               ))
-          ) : (
-            <Spinner />
           )}
         </Row>
       </Content>

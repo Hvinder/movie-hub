@@ -31,9 +31,7 @@ const SearchContainer = styled.div``;
 
 const Header: React.FC<{
   showSearch?: boolean;
-  searchQuery?: string;
-  setSearchQuery?: React.Dispatch<React.SetStateAction<string>>;
-}> = ({ showSearch = false, setSearchQuery, searchQuery }) => {
+}> = ({ showSearch = false }) => {
   return (
     <Container className="gradient-background">
       <BrandContainer>
@@ -42,10 +40,7 @@ const Header: React.FC<{
       </BrandContainer>
       {showSearch && (
         <SearchContainer>
-          <SearchBox
-            searchQuery={searchQuery}
-            setSearchQuery={setSearchQuery}
-          />
+          <SearchBox />
         </SearchContainer>
       )}
     </Container>
