@@ -11,7 +11,12 @@ const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   };
 
   return (
-    <AppContext.Provider value={{ searchQuery, updateSearchQuery }}>
+    <AppContext.Provider
+      value={{
+        searchQuery,
+        updateSearchQuery,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );

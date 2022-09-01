@@ -1,4 +1,4 @@
 export interface IAppContext {
-  searchQuery?: string;
+  searchQuery: string;
   updateSearchQuery: (searchQuery: string) => void;
 }

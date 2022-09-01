@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { debounce } from "lodash";
+
 import { AppContext } from "../context";
 import { IAppContext } from "../types/context";
 
@@ -26,16 +28,27 @@ const Input = styled.input`
 `;
 
 const SearchBox: React.FC = () => {
-  const { searchQuery, updateSearchQuery } = React.useContext(
-    AppContext
-  ) as IAppContext;
+  const { updateSearchQuery } = React.useContext(AppContext) as IAppContext;
+  const [searchValue, setSearchValue] = React.useState("");
+
+  const filterMovies = React.useCallback(
+    debounce((val: string) => {
+      updateSearchQuery(val);
+    }, 500),
+    []
+  );
+
+  const handleInputChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(ev.target.value);
+    filterMovies(ev.target.value);
+  };
 
   return (
     <Input
       type="text"
       placeholder="Search title"
-      value={searchQuery}
-      onChange={(ev) => updateSearchQuery(ev.target.value)}
+      value={searchValue}
+      onChange={handleInputChange}
     />
   );
 };
