@@ -91,11 +91,9 @@ const MovieList: React.FC = () => {
             {moviesLoading ? (
               <Spinner />
             ) : (
-              movieList
-                .slice(0, 9)
-                .map((movie) => (
-                  <MovieCard key={movie.id} movieDetail={movie} showActors />
-                ))
+              movieList.map((movie) => (
+                <MovieCard key={movie.id} movieDetail={movie} showActors />
+              ))
             )}
           </Row>
         </ListContainer>
