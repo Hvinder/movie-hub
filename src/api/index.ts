@@ -23,3 +23,12 @@ export const fetchMovies = async ({
     console.error(err);
   }
 };
+
+export const fetchMovie = async ({ id }: { id: string }) => {
+  try {
+    const data = await axios.get<MovieDetails>(`/movie?id=${id}`);
+    return data.data;
+  } catch (err) {
+    console.error(err);
+  }
+};

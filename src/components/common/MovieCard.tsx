@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { MovieDetails } from "../../types";
+import ActorDetails from "./ActorDetails";
 
 const Container = styled.div`
   display: flex;
@@ -46,27 +48,6 @@ const ActorListContainer = styled.div`
   width: 100%;
 `;
 
-const ActorContainer = styled.div`
-  display: flex;
-  align-items: center;
-  width: 50%;
-  gap: 10px;
-`;
-
-const ActorPic = styled.div`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: #c4c4c4;
-`;
-
-const ActorName = styled.div`
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 20px;
-  color: #000000;
-`;
-
 interface MovieCardProps {
   movieDetail: MovieDetails;
   showActors?: boolean;
@@ -76,18 +57,17 @@ const MovieCard: React.FC<MovieCardProps> = ({
   movieDetail,
   showActors = false,
 }) => {
+  const navigate = useNavigate();
+
   return (
-    <Container>
+    <Container onClick={() => navigate(`/movie/${movieDetail.id}`)}>
       <Thumbnail />
       <Title>{movieDetail.name}</Title>
       <Description>{movieDetail.description}</Description>
       {showActors && (
         <ActorListContainer>
           {movieDetail.actors.slice(0, 2).map((actor) => (
-            <ActorContainer key={actor.id}>
-              <ActorPic />
-              <ActorName>{actor.name}</ActorName>
-            </ActorContainer>
+            <ActorDetails actor={actor} key={actor.id} />
           ))}
         </ActorListContainer>
       )}
