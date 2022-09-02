@@ -4,6 +4,7 @@ import Routes from "./routes";
 function App() {
   return (
     <AppProvider>
+      <div id="back-to-top-anchor" />
       <Routes />
     </AppProvider>
   );

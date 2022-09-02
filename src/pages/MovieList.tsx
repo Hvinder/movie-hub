@@ -10,6 +10,7 @@ import { MovieDetails } from "../types";
 import { IAppContext } from "../types/context";
 import { AppContext } from "../context";
 import Pagination from "../components/Pagination";
+import GoToTop from "../components/common/GoToTop";
 
 const Container = styled.div`
   display: flex;
@@ -103,6 +104,7 @@ const MovieList: React.FC = () => {
           disableNext={!movieList.length}
           disableButtons={moviesLoading}
         />
+        <GoToTop />
       </Content>
       <Footer />
     </Container>
