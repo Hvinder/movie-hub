@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Logo from "../../assets/Logo";
 import SearchBox from "../SearchBox";
@@ -17,6 +18,7 @@ const BrandContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 4px;
+  cursor: pointer;
 `;
 
 const Brand = styled.div`
@@ -32,9 +34,11 @@ const SearchContainer = styled.div``;
 const Header: React.FC<{
   showSearch?: boolean;
 }> = ({ showSearch = false }) => {
+  const navigate = useNavigate();
+
   return (
     <Container className="gradient-background">
-      <BrandContainer>
+      <BrandContainer onClick={() => navigate("/")}>
         <Logo />
         <Brand>Movies</Brand>
       </BrandContainer>
