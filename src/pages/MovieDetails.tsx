@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { fetchMovie } from "../api";
 import ActorDetails from "../components/common/ActorDetails";
 import Footer from "../components/common/Footer";
+import GoToTop from "../components/common/GoToTop";
 import Header from "../components/common/Header";
 import Spinner from "../components/common/Spinner";
 import { MovieDetails as IMovieDetails } from "../types";
@@ -16,6 +17,14 @@ const Container = styled.div`
   width: 100%;
   box-sizing: border-box;
   min-height: 100vh;
+`;
+
+const SpinnerCon = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 `;
 
 const Content = styled.div`
@@ -98,7 +107,9 @@ const MovieDetails: React.FC = () => {
       <Header />
       <Content>
         {detailsLoading ? (
-          <Spinner />
+          <SpinnerCon>
+            <Spinner />
+          </SpinnerCon>
         ) : (
           <>
             <Poster />
@@ -117,6 +128,7 @@ const MovieDetails: React.FC = () => {
             </CastBox>
           </>
         )}
+        <GoToTop />
       </Content>
       <Footer />
     </Container>

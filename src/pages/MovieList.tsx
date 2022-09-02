@@ -101,7 +101,7 @@ const MovieList: React.FC = () => {
         <Pagination
           page={page}
           setPage={setPage}
-          disableNext={!movieList.length}
+          disableNext={movieList.length < 9}
           disableButtons={moviesLoading}
         />
         <GoToTop />

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Arrow from "../../assets/Arrow";
 
 const Container = styled.div`
   display: flex;
@@ -25,7 +26,11 @@ const GoToTop: React.FC = () => {
     }
   };
 
-  return <Container onClick={handleClick} />;
+  return (
+    <Container onClick={handleClick}>
+      <Arrow />
+    </Container>
+  );
 };
 
 export default GoToTop;
